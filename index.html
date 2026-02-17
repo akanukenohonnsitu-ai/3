@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOMINO – 事前インタビュー募集｜外見 × ショートSNS</title>
+  <meta name="description" content="外見×ショートSNSで「人気（モテ）」を連鎖させる新サービス「ドミノ」ローンチ前の無料インタビュー募集。10名限定。">
+  <meta property="og:title" content="DOMINO – 事前インタビュー募集">
+  <meta property="og:description" content="顔出しで「人気」を取りに行く男だけ、悩みを聞かせてください。10名限定・無料。">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0c0c;
+      --bg-elevated: #141413;
+      --bg-subtle: #1a1918;
+      --surface: #1f1e1c;
+      --gold: #c4a55a;
+      --gold-dim: rgba(196, 165, 90, 0.08);
+      --gold-glow: rgba(196, 165, 90, 0.15);
+      --cream: #e8e0d0;
+      --cream-secondary: #a39e93;
+      --cream-muted: #6b675f;
+      --border: rgba(196, 165, 90, 0.12);
+      --border-subtle: rgba(232, 224, 208, 0.06);
+      --success: #7a9e7e;
+      --danger: #b56b60;
+      --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--cream);
+      line-height: 1.95;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    ::selection {
+      background: var(--gold);
+      color: var(--bg);
+    }
+
+    /* ─── Noise texture ─── */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    /* ─── Layout ─── */
+    .frame {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .frame--wide {
+      max-width: 880px;
+    }
+
+    .section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section + .section {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .section--compact { padding: 80px 0; }
+    .section--flush { padding: 0; border: none; }
+
+    /* ─── Typography ─── */
+    .cormorant { font-family: 'Cormorant', serif; }
+    .mincho { font-family: 'Shippori Mincho', serif; }
+
+    h1, h2, h3 { font-weight: 500; }
+
+    h2 {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      letter-spacing: 0.02em;
+    }
+
+    h3 {
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+
+    p {
+      margin-bottom: 20px;
+      font-size: 0.92rem;
+      letter-spacing: 0.02em;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--cream-muted);
+    }
+
+    .body-secondary { color: var(--cream-secondary); }
+
+    /* ─── Reveal animations ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal--delay-1 { transition-delay: 0.1s; }
+    .reveal--delay-2 { transition-delay: 0.2s; }
+    .reveal--delay-3 { transition-delay: 0.3s; }
+    .reveal--delay-4 { transition-delay: 0.4s; }
+
+    /* ═════════════════════════════════════════
+       HERO
+    ═════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 0;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, var(--gold-glow) 0%, transparent 65%);
+      animation: breathe 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(1); }
+      50% { opacity: 0.7; transform: translateX(-50%) scale(1.08); }
+    }
+
+    .hero__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 24px;
+      border: 1px solid var(--border);
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.2s forwards;
+    }
+
+    .hero__badge-text {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      color: var(--gold);
+    }
+
+    .hero__badge-divider {
+      width: 1px;
+      height: 12px;
+      background: var(--border);
+    }
+
+    .hero__title {
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.4s forwards;
+    }
+
+    .hero__title-en {
+      font-family: 'Cormorant', serif;
+      font-size: clamp(4rem, 12vw, 7.5rem);
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 0.9;
+      letter-spacing: 0.06em;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .hero__title-ja {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.1rem, 3vw, 1.5rem);
+      font-weight: 500;
+      line-height: 1.7;
+      letter-spacing: 0.04em;
+    }
+
+    .hero__description {
+      max-width: 500px;
+      margin: 40px auto 0;
+      color: var(--cream-secondary);
+      font-size: 0.88rem;
+      line-height: 2.1;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.6s forwards;
+    }
+
+    .hero__specs {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 56px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 0.8s forwards;
+    }
+
+    .hero__spec { text-align: center; }
+
+    .hero__spec-value {
+      font-family: 'Cormorant', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+    }
+
+    .hero__cta {
+      margin-top: 64px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out-expo) 1s forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─── CTA Button ─── */
+    .btn {
+      display: inline-block;
+      padding: 18px 56px;
+      background: var(--gold);
+      color: var(--bg);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.5s var(--ease-out-expo), box-shadow 0.5s var(--ease-out-expo);
+    }
+
+    .btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 50%);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 48px rgba(196, 165, 90, 0.2);
+    }
+
+    .btn:hover::after { opacity: 1; }
+
+    .btn__sub {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.68rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--cream-muted);
+      text-align: center;
+    }
+
+    /* ─── Hairline divider ─── */
+    .hairline {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      opacity: 0.4;
+      margin: 0 auto;
+    }
+
+    /* ═════════════════════════════════════════
+       FEATURES ROW (Hero bottom)
+    ═════════════════════════════════════════ */
+    .features-bar {
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 0;
+    }
+
+    .features-bar__inner {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .features-bar__item {
+      padding: 32px 24px;
+      text-align: center;
+      position: relative;
+    }
+
+    .features-bar__item + .features-bar__item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 20%;
+      bottom: 20%;
+      width: 1px;
+      background: var(--border-subtle);
+    }
+
+    .features-bar__icon {
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .features-bar__text {
+      font-size: 0.82rem;
+      color: var(--cream-secondary);
+      line-height: 1.7;
+    }
+
+    .features-bar__text strong {
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    /* ═════════════════════════════════════════
+       WHY
+    ═════════════════════════════════════════ */
+    .why__lead {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      line-height: 2;
+      font-weight: 500;
+      margin-bottom: 48px;
+      color: var(--cream);
+    }
+
+    .why__body {
+      color: var(--cream-secondary);
+      font-size: 0.92rem;
+      line-height: 2.1;
+    }
+
+    .why__body strong { color: var(--cream); }
+
+    .callout {
+      margin-top: 48px;
+      padding: 28px 32px;
+      background: var(--gold-dim);
+      border-left: 2px solid var(--gold);
+      font-size: 0.85rem;
+      color: var(--cream-secondary);
+      line-height: 2;
+    }
+
+    .callout strong { color: var(--cream); }
+
+    /* ═════════════════════════════════════════
+       BRIDGE QUOTE
+    ═════════════════════════════════════════ */
+    .bridge {
+      text-align: center;
+      padding: 100px 0;
+    }
+
+    .bridge__text {
+      font-family: 'Shippori Mincho', serif;
+      font-size: clamp(1rem, 2.8vw, 1.2rem);
+      line-height: 2.2;
+      color: var(--cream-secondary);
+      max-width: 440px;
+      margin: 0 auto;
+      font-weight: 500;
+    }
+
+    .bridge__text strong { color: var(--gold); font-weight: 500; }
+
+    .bridge__line {
+      width: 1px;
+      height: 48px;
+      background: var(--gold);
+      opacity: 0.3;
+      margin: 0 auto 40px;
+    }
+
+    /* ═════════════════════════════════════════
+       PAIN POINTS
+    ═════════════════════════════════════════ */
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .pain-list li {
+      padding: 22px 28px 22px 56px;
+      background: var(--bg-elevated);
+      position: relative;
+      font-size: 0.9rem;
+      color: var(--cream-secondary);
+      line-height: 1.8;
+      transition: background 0.4s var(--ease-out-quart);
+    }
+
+    .pain-list li::before {
+      content: '';
+      position: absolute;
+      left: 28px;
+      top: 30px;
+      width: 6px;
+      height: 6px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      transition: background 0.3s;
+    }
+
+    .pain-list li:hover {
+      background: var(--bg-subtle);
+    }
+
+    .pain-list li:hover::before {
+      background: var(--gold);
+    }
+
+    .pain-list li strong { color: var(--cream); font-weight: 500; }
+
+    /* ═════════════════════════════════════════
+       VALUE
+    ═════════════════════════════════════════ */
+    .value-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 48px;
+    }
+
+    .value-card {
+      padding: 40px 32px;
+      background: var(--bg-elevated);
+    }
+
+    .value-card h3 { margin-bottom: 24px; }
+
+    .value-card__item {
+      padding: 8px 0 8px 18px;
+      position: relative;
+      font-size: 0.85rem;
+      color: var(--cream-secondary);
+      line-height: 1.8;
+    }
+
+    .value-card__item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 17px;
+      width: 4px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .value-card__item strong { color: var(--cream); font-weight: 500; }
+
+    /* ═════════════════════════════════════════
+       TARGET
+    ═════════════════════════════════════════ */
+    .target-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      margin-top: 40px;
+    }
+
+    .target-card {
+      padding: 40px 32px;
+      background: var(--bg-elevated);
+    }
+
+    .target-card h3 { margin-bottom: 20px; }
+    .target-card--no h3 { color: var(--danger); }
+
+    .target-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .target-card li {
+      font-size: 0.85rem;
+      color: var(--cream-secondary);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.7;
+    }
+
+    .target-card li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--cream-muted);
+    }
+
+    .target-card--no li::before { color: var(--danger); }
+
+    /* ═════════════════════════════════════════
+       FLOW
+    ═════════════════════════════════════════ */
+    .flow {
+      margin-top: 48px;
+      position: relative;
+      padding-left: 48px;
+    }
+
+    .flow::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .flow__step {
+      padding: 28px 0;
+      position: relative;
+    }
+
+    .flow__step + .flow__step {
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .flow__num {
+      position: absolute;
+      left: -48px;
+      top: 28px;
+      width: 17px;
+      height: 17px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Cormorant', serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      color: var(--gold);
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+    }
+
+    .flow__title {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .flow__desc {
+      font-size: 0.82rem;
+      color: var(--cream-muted);
+      line-height: 1.7;
+    }
+
+    .flow-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 24px;
+      margin-top: 48px;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+      font-size: 0.85rem;
+    }
+
+    .flow-meta dt { color: var(--cream-muted); font-weight: 400; }
+    .flow-meta dd { color: var(--cream); font-weight: 400; }
+
+    /* ═════════════════════════════════════════
+       FAQ
+    ═════════════════════════════════════════ */
+    .faq-item {
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-align: left;
+      padding: 24px 48px 24px 0;
+      cursor: pointer;
+      position: relative;
+      line-height: 1.7;
+      letter-spacing: 0.02em;
+      transition: color 0.3s;
+    }
+
+    .faq-q:hover { color: var(--gold); }
+
+    .faq-q::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      width: 16px;
+      height: 1px;
+      background: var(--cream-muted);
+      transition: transform 0.4s var(--ease-out-expo), background 0.3s;
+    }
+
+    .faq-q::before {
+      content: '';
+      position: absolute;
+      right: 7.5px;
+      top: calc(50% - 7.5px);
+      width: 1px;
+      height: 16px;
+      background: var(--cream-muted);
+      transition: transform 0.4s var(--ease-out-expo), opacity 0.3s;
+    }
+
+    .faq-item.open .faq-q::before {
+      transform: rotate(90deg);
+      opacity: 0;
+    }
+
+    .faq-item.open .faq-q::after {
+      background: var(--gold);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.6s var(--ease-out-expo), padding 0.6s var(--ease-out-expo);
+      padding: 0 0 0 0;
+      color: var(--cream-secondary);
+      font-size: 0.85rem;
+      line-height: 2;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    /* ═════════════════════════════════════════
+       BOTTOM CTA
+    ═════════════════════════════════════════ */
+    .cta-final {
+      text-align: center;
+      padding: 140px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-final::before {
+      content: '';
+      position: absolute;
+      bottom: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(circle, var(--gold-glow) 0%, transparent 60%);
+      pointer-events: none;
+      opacity: 0.5;
+    }
+
+    .cta-final h2 {
+      font-size: clamp(1.2rem, 3.5vw, 1.5rem);
+      margin-bottom: 20px;
+    }
+
+    .cta-final p {
+      color: var(--cream-secondary);
+      margin-bottom: 48px;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+    }
+
+    .footer__text {
+      font-family: 'Cormorant', serif;
+      font-size: 0.75rem;
+      color: var(--cream-muted);
+      letter-spacing: 0.15em;
+    }
+
+    /* ═════════════════════════════════════════
+       RESPONSIVE
+    ═════════════════════════════════════════ */
+    @media (max-width: 680px) {
+      .frame { padding: 0 20px; }
+      .section { padding: 80px 0; }
+      .hero { min-height: auto; padding: 120px 0 80px; }
+      .hero__specs { gap: 24px; flex-wrap: wrap; }
+      .features-bar__inner { grid-template-columns: 1fr; }
+      .features-bar__item + .features-bar__item::before {
+        left: 20%; right: 20%; top: 0; bottom: auto;
+        width: auto; height: 1px;
+      }
+      .value-grid { grid-template-columns: 1fr; }
+      .target-grid { grid-template-columns: 1fr; }
+      .bridge { padding: 72px 0; }
+      .cta-final { padding: 100px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══════ HERO ═══════ -->
+  <section class="hero">
+    <div class="frame">
+      <div class="hero__badge">
+        <span class="hero__badge-text">10名限定</span>
+        <span class="hero__badge-divider"></span>
+        <span class="hero__badge-text">無料</span>
+      </div>
+
+      <div class="hero__title">
+        <span class="hero__title-en cormorant">DOMINO</span>
+        <span class="hero__title-ja">
+          顔出しで「人気」を取りに行く男だけ、<br>悩みを聞かせてください。
+        </span>
+      </div>
+
+      <p class="hero__description">
+        外見 × ショートSNSで "モテ" を連鎖させる新サービス「ドミノ」──<br>
+        2/28のローンチ前に、あなたのリアルな悩みを60分聞かせてください。<br>
+        営業ゼロ。代わりに、本気のフィードバックを返します。
+      </p>
+
+      <div class="hero__specs">
+        <div class="hero__spec">
+          <div class="label">参加費</div>
+          <div class="hero__spec-value">¥0</div>
+        </div>
+        <div class="hero__spec">
+          <div class="label">募集</div>
+          <div class="hero__spec-value">10名選抜</div>
+        </div>
+        <div class="hero__spec">
+          <div class="label">期間</div>
+          <div class="hero__spec-value">2/18 – 27</div>
+        </div>
+      </div>
+
+      <div class="hero__cta">
+        <a href="#apply" class="btn">無料インタビューに応募する</a>
+        <span class="btn__sub">先着順ではありません。ターゲットに近い方を選抜します。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FEATURES BAR ═══════ -->
+  <div class="features-bar">
+    <div class="frame frame--wide">
+      <div class="features-bar__inner">
+        <div class="features-bar__item reveal">
+          <div class="features-bar__icon">01</div>
+          <div class="features-bar__text"><strong>60分のオンライン面談</strong><br>Zoom or Google Meet</div>
+        </div>
+        <div class="features-bar__item reveal reveal--delay-1">
+          <div class="features-bar__icon">02</div>
+          <div class="features-bar__text">SNS・外見の現状を見て<br><strong>その場で改善フィードバック</strong></div>
+        </div>
+        <div class="features-bar__item reveal reveal--delay-2">
+          <div class="features-bar__icon">03</div>
+          <div class="features-bar__text">商品の営業は<strong>一切しません</strong><br>目的はヒアリングだけ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════ WHY ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>Purpose</h3>
+        <div class="why__lead">
+          これは「売り込みの場」じゃない。<br>あなたの"本音"が欲しいんです。
+        </div>
+      </div>
+
+      <div class="why__body reveal reveal--delay-1">
+        <p>2/28に、外見改善 × ショートSNSで<strong>「モテと人気」を本気で設計する</strong>サービス「ドミノ」をローンチします。</p>
+
+        <p>ただ、正直に言います。<br>
+        作り手が頭の中だけで考えた言葉は、だいたい<strong>刺さってるつもりで、刺さってない。</strong></p>
+
+        <p>だから、ローンチ前にやることは宣伝じゃなく<strong>「聞くこと」</strong>にしました。<br>
+        実際にターゲットになりうる男性10人に会って、SNSと外見のリアルな悩みを、深掘りして聞きたい。</p>
+
+        <p>一方的にもらうだけだとフェアじゃないので、<br>
+        お返しに<strong>60分、あなたのSNSと外見を本気で見て改善案を返します。</strong></p>
+      </div>
+
+      <div class="callout reveal reveal--delay-2">
+        <strong>約束：</strong>商品の説明・勧誘・セールスは一切しません。<br>
+        面談は「ヒアリング + フィードバック」── それだけです。
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ BRIDGE ═══════ -->
+  <section class="section section--compact bridge">
+    <div class="frame">
+      <div class="reveal">
+        <div class="bridge__line"></div>
+        <p class="bridge__text">
+          「何かを変えたい」と思ってるのに、<br>
+          <strong>何から手をつければいいか分からない。</strong><br>
+          ── その感覚、ここで話してください。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ PAIN ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>For you?</h3>
+        <h2>こんな "モヤモヤ" を抱えてませんか？</h2>
+      </div>
+
+      <ul class="pain-list reveal reveal--delay-1">
+        <li>SNSをやってる（or やりたい）けど、<strong>なぜ伸びないのか言語化できない</strong></li>
+        <li>バズりたいわけじゃない。<strong>「あの人いいよね」って言われる側になりたい</strong></li>
+        <li>顔出しに抵抗はない。むしろ<strong>自分という人間で勝負したい</strong></li>
+        <li>外見を変えたいけど、美容院？筋トレ？服？ <strong>何が "自分にとっての正解" か分からない</strong></li>
+        <li>周りはそれなりに上手くやってるのに、<strong>自分だけ止まってる気がする</strong></li>
+        <li>普通で終わりたくない。<strong>どうせやるなら、レベルの高いところを狙いたい</strong></li>
+      </ul>
+
+      <p class="body-secondary reveal reveal--delay-2" style="margin-top: 32px; text-align: center; font-size: 0.82rem;">
+        1つでも当てはまるなら、今回の面談で解像度が変わるはずです。
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════ VALUE ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>What you get</h3>
+        <h2>無料でも手を抜きません。<br>60分で、ここまで返します。</h2>
+        <p class="body-secondary" style="margin-bottom: 0;">
+          「持ち帰って検討します」ではなく、<strong>その場で具体的に返す</strong>のがこの面談です。
+        </p>
+      </div>
+    </div>
+
+    <div class="frame frame--wide">
+      <div class="value-grid reveal reveal--delay-1">
+        <div class="value-card">
+          <h3>SNS ── Short</h3>
+          <div class="value-card__item">なぜ伸びないのか？ コンセプト・キャラ・見せ方・構成の<strong>仮説を言語化</strong></div>
+          <div class="value-card__item">あなたの場合、<strong>どの角度で戦えば勝てるか</strong>を整理</div>
+          <div class="value-card__item">次に出すべき動画の<strong>ネタと方向性</strong>を具体化</div>
+          <div class="value-card__item">伸びる ≠ 人気。<strong>フォロワーじゃなく "ファン" がつく設計</strong></div>
+        </div>
+        <div class="value-card">
+          <h3>Appearance</h3>
+          <div class="value-card__item"><strong>何を・どの順番で変えれば最短で変わるか</strong>── 優先順位を明確化</div>
+          <div class="value-card__item">お金をかけるべきところ、<strong>かけなくていいところ</strong>を仕分け</div>
+          <div class="value-card__item">髪 / 眉 / 肌 / 服 / 体型 / 表情 / 姿勢 / 撮影映え ──<strong>改善ポイントを具体的に指摘</strong></div>
+          <div class="value-card__item">美容医療・矯正は「選択肢の整理と優先順位」の範囲で相談OK</div>
+        </div>
+      </div>
+
+      <div class="frame" style="padding-top: 48px;">
+        <div class="callout reveal reveal--delay-2">
+          目的は「あなたをジャッジする」ことじゃない。<br>
+          <strong>あなたの悩みを素材に、ローンチ前の "刺さる言葉" を作ること</strong>── それがこちらの本音です。<br>
+          だから、遠慮なく話してほしい。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ TARGET ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>Who</h3>
+        <h2>来てほしい人 / 合わない人</h2>
+        <p class="body-secondary" style="margin-bottom: 0;">お互いの時間を無駄にしないために。</p>
+      </div>
+    </div>
+
+    <div class="frame frame--wide">
+      <div class="target-grid reveal reveal--delay-1">
+        <div class="target-card">
+          <h3>Come</h3>
+          <ul>
+            <li>20〜30代の男性</li>
+            <li>顔出しOK（これは必須）</li>
+            <li>「モテ」「人気」を本気で取りに行く覚悟がある</li>
+            <li>SNS経験は問いません（未経験もOK）</li>
+          </ul>
+        </div>
+        <div class="target-card target-card--no">
+          <h3>Not this time</h3>
+          <ul>
+            <li>顔出しが絶対にNGの方</li>
+            <li>「1本バズらせて終わり」を求める方</li>
+            <li>聞くだけ聞いて動く気がない方</li>
+            <li>建設的な対話が難しい方</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FLOW ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>Process</h3>
+        <h2>面談の流れ ── 60分</h2>
+        <p class="body-secondary" style="margin-bottom: 0;">一方的なコンサルじゃなく、対話です。構えなくて大丈夫。</p>
+      </div>
+
+      <div class="flow reveal reveal--delay-1">
+        <div class="flow__step">
+          <span class="flow__num">1</span>
+          <div class="flow__title">現状ヒアリング</div>
+          <div class="flow__desc">SNS / 外見 / ライフスタイル / 目指したい方向</div>
+        </div>
+        <div class="flow__step">
+          <span class="flow__num">2</span>
+          <div class="flow__title">ボトルネックの言語化</div>
+          <div class="flow__desc">「何がどう詰まっているか」を一緒に整理</div>
+        </div>
+        <div class="flow__step">
+          <span class="flow__num">3</span>
+          <div class="flow__title">改善プランをその場で提示</div>
+          <div class="flow__desc">次にやるべき一手を、具体的に</div>
+        </div>
+        <div class="flow__step">
+          <span class="flow__num">4</span>
+          <div class="flow__title">あなたの言葉を聞かせてください</div>
+          <div class="flow__desc">この悩みを「どう表現するか」── それがインタビュー</div>
+        </div>
+      </div>
+
+      <dl class="flow-meta reveal reveal--delay-2">
+        <dt>形式</dt><dd>オンライン（Zoom or Google Meet）</dd>
+        <dt>日程</dt><dd>2/18〜2/27 で個別調整</dd>
+        <dt>料金</dt><dd style="color: var(--gold);">無料</dd>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ═══════ FAQ ═══════ -->
+  <section class="section">
+    <div class="frame">
+      <div class="reveal">
+        <h3>FAQ</h3>
+        <h2>よくある質問</h2>
+      </div>
+
+      <div class="reveal reveal--delay-1">
+        <div class="faq-item open">
+          <button class="faq-q" onclick="toggleFaq(this)">本当に営業されない？</button>
+          <div class="faq-a">されません。面談中に商品の話は出しません。ただし「ローンチしたら教えて」と言ってくれた方には、希望者だけ案内を送ります。購入義務はゼロです。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">SNSをやっていなくても参加できる？</button>
+          <div class="faq-a">もちろん。「これからやりたいけど何も分からない」── その悩みこそ聞きたいです。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">なぜ顔出し必須なの？</button>
+          <div class="faq-a">ドミノは "あなた自身" を武器にする設計です。顔出し前提で「人気を取りに行く人」のリアルな悩みを聞くことに意味があるので、今回は顔出しOKの方のみ募集しています。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">予定が変わったらキャンセルできる？</button>
+          <div class="faq-a">できます。前日までに連絡をください。枠が限られているので、無断キャンセルの場合は今後の募集にご案内できない場合があります。</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">10人以上応募があったらどうなる？</button>
+          <div class="faq-a">ターゲットに近い方を優先して選抜します。結果は応募後にLINEでご連絡します。</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CTA FINAL ═══════ -->
+  <section class="section cta-final" id="apply">
+    <div class="frame">
+      <div class="reveal">
+        <div class="hairline" style="margin-bottom: 48px;"></div>
+        <h2>60分、本音を聞かせてください。<br>本気のフィードバックで返します。</h2>
+        <p class="body-secondary">応募多数の場合は、ターゲットに近い方を優先してご連絡します。</p>
+        <a href="#" class="btn">応募フォームへ進む</a>
+        <span class="btn__sub">10名限定 ── 枠が埋まり次第、募集終了</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ FOOTER ═══════ -->
+  <footer class="footer">
+    <div class="frame">
+      <div class="footer__text">&copy; 2025 DOMINO</div>
+    </div>
+  </footer>
+
+  <script>
+    /* FAQ */
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    }
+
+    /* Scroll reveal */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>
